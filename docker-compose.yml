@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+    python-xp:
+        build:
+          dockerfile: Dockerfile
+          context: ./
+        volumes:
+          - .:/usr/src/app
