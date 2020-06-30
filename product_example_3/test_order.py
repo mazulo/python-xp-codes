@@ -39,7 +39,7 @@ class TestGetPrice:
     ):
         discount = Decimal('0.6')
 
-        uri = re.compile(r'(?s).*')
+        uri = re.compile(r'http://127.0.0.1:8000/*')
         shipping_body = {"price": str(shipping_price)}
         product_body = {"price": str(product_price)}
         httpretty.register_uri(
@@ -66,7 +66,7 @@ class TestGetPrice:
         product_price,
     ):
         discount = Decimal('0.6')
-        uri = re.compile(r'(?s).*')
+        uri = re.compile(r'http://127.0.0.1:8000/*')
         httpretty.register_uri(
             httpretty.GET,
             uri,

@@ -7,9 +7,6 @@ import httpretty
 from order import Order
 
 
-API_URL = 'http://127.0.0.1:8000/'
-
-
 class TestGetPrice:
 
     @httpretty.activate
@@ -18,7 +15,7 @@ class TestGetPrice:
         shipping_price = Decimal('10.15')
         product_price = Decimal('200.80')
 
-        uri = re.compile(r'(?s).*')
+        uri = re.compile(r'http://127.0.0.1:8000/*')
         shipping_body = json.dumps(
             {"price": str(Decimal(shipping_price))}
         )
@@ -44,7 +41,7 @@ class TestGetPrice:
 
     @httpretty.activate
     def test_when_apis_are_down_order_price_is_zero(self, mocker):
-        uri = re.compile(r'(?s).*')
+        uri = re.compile(r'http://127.0.0.1:8000/*')
         httpretty.register_uri(
             httpretty.GET,
             uri,
